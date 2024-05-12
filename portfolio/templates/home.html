@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+<header class="row">
+  <div class="col-md-4">
+    <img src="{% static 'perfil.jpg' %}" alt="" width="90" height="90">
+  </div>
+  <div class="col-md-8">
+    <h1>I am <strong>Tina tutina</strong></h1>
+    <h3>Full stack web developer</h3>
+    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suf</p>
+    <li class="nav-item d-flex align-items-center">
+        <a class="btn btn-primary btn-lg rounded-0 my-3" href="{% static 'curriculum.pdf' %}">Download CV</a>
+    </li>
+  </div>
+</header>
+
+<header class="row"> <!-- Agregado -->
+    <div class="col-md-8">
+        <h1>I am <strong>Mildreth Moreira</strong></h1>
+        <h3>Full stack web developer</h3>
+        <p>¿Por qué lo usamos? Es un hecho establecido hace demasiado tiempo que un lector se distraerá 
+            con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum 
+            es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como 
+            por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer.
+             Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto,
+              y al hacer una búsqueda de "Lorem Ipsum" va a dar por resultado muchos sitios web que usan este texto 
+              si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, 
+              algunas veces por accidente, otras veces a propósito por ejemplo insertándole humor y cosas por el estilo.
+               ¿De dónde viene? Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio.
+                Tiene sus raíces en una pieza clásica de la literatura del Latín, que data del año 45 antes de Cristo</p>
+        <a class="btn btn-primary btn-lg rounded-0 my-3" href="{% static 'curriculum.pdf' %}" target="_blank">Download CV</a>
+    </div>
+</header> <!-- Cerrado -->
+
+<h1>BIENVENIDO A CASA</h1>
+{% for project in projects %}
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
+    <img src="{{ project.image.url }}" alt="{{ project.title }}" width="60" height="60">
+    <br>
+    {% if project.url %}
+        <a href="{{ project.url }}">{{ project.url }}</a>
+    {% endif %}
+{% endfor %}
+{% endblock %}
